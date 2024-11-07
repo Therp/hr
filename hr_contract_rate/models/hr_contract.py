@@ -12,7 +12,7 @@ class HrContract(models.Model):
         inverse="_inverse_wage",
         store=True,
         required=False,
-        track_visibility=None,
+        tracking=True,
     )
     approximate_wage = fields.Monetary(
         string="Wage (approximate)",
@@ -40,8 +40,7 @@ class HrContract(models.Model):
         help="How many work weeks there is in an average month",
     )
     amount = fields.Monetary(
-        string="Amount",
-        track_visibility="onchange",
+        tracking=True,
         help="Employee's contract amount per period",
     )
     amount_period = fields.Selection(
@@ -55,7 +54,7 @@ class HrContract(models.Model):
             ("year", "Year"),
         ],
         default="month",
-        track_visibility="onchange",
+        tracking=True,
         help="Period of employee's contract amount",
     )
 
